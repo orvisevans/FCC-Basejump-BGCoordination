@@ -1,0 +1,29 @@
+{
+  "name": "nightlife-app",
+  "version": "1.0.0",
+  "description": "Nightlife coordination app for boardgamers",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/orvisevans/FCC-Basejump-BGCoordination.git"
+  },
+  "keywords": [
+    "MEAN",
+    "FreeCodeCamp.com",
+    "BoardGame",
+    "Webapp"
+  ],
+  "author": "orvisevans",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/orvisevans/FCC-Basejump-BGCoordination/issues"
+  },
+  "homepage": "https://github.com/orvisevans/FCC-Basejump-BGCoordination#readme",
+  "dependencies": {
+    "express": "^4.13.3",
+    "mongodb": "^2.0.42"
+  }
+}
