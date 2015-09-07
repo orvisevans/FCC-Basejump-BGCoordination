@@ -2,27 +2,20 @@
 
 var express = require('express'),
     routes = require('./app/routes/index.js'),
-    mongo = require('mongodb').MongoClient;
+    mongoose = require('mongoose');
 
 var app = express();
 
-mongo.connect('mongodb://localhost:27017/nightlifeApp', function (err, db) {
+mongoose.connect('mongodb://localhost:27017/nightlifeApp');
 
-  if (err) {
-    throw new Error('Database failed to connect!');
-  } else {
-    console.log('MongoDB successfully connected on port 27017.');
-  }
+var path = process.cwd();
 
-  var path = process.cwd();
+app.use('/public', express.static(path + '/public'));
+app.use('/controllers', express.static(path + '/app/controllers'));
 
-  app.use('/public', express.static(path + '/public'));
-  app.use('/controllers', express.static(path + '/app/controllers'));
+routes(app);
 
-  routes(app, db);
-
-  app.listen(3000, function () {
-    console.log('Listening on port 3000...');
-  });
-
+var port = 3000;
+app.listen(port, function () {
+  console.log('Listening on port ' + port + '...');
 });

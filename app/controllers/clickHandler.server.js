@@ -1,54 +1,37 @@
 'use strict';
 
-module.exports.clickHandler = function (db) {
+var Clicks = require('../models/clicks.js');
 
-  var clicks = db.collection('clicks');
+function clickHandler () {
 
   this.getClicks = function (req, res) {
-    clicks
-      .findOne(
-        {},
-        {'_id': false },
-        function (err, result) {
-          if (err) { throw err; }
+    Clicks
+      .findOne({}, { '_id': false})
+      .exec(function (err, result) {
+        if (err) {throw err;}
 
-          var clickResults = [];
+        var clickResults = [];
 
-          if (result) {
+        if (result) {
+          clickResults.push(result);
+          res.json(clickResults);
+        } else {
+          var newDoc = new Click({ 'clicks': 0});
+          newDoc.save(function (err, doc) {
+            if (err) {throw err;}
 
-            clickResults.push(result);
+            clickResults.push(doc);
             res.json(clickResults);
-
-          } else { //init
-
-            clicks.insert({'clicks': 0}, function (err) {
-              if (err) { throw err; }
-
-              clicks.findOne(
-                {},
-                {'_id': false},
-                function (err, doc) {
-                  if (err) { throw err; }
-
-                  clickResults.push(doc);
-                  res.json(clickResults);
-                }
-              );
-
-            });
-
-          }
+          });
         }
-      );
+
+      });
   };
 
   this.addClick = function (req, res) {
-    clicks
-      .findAndModify(
-        {},
-        { '_id': 1},
-        { $inc: {'clicks': 1} },
-        function (err, result) {
+    Clicks
+      .findOneAndUpdate({}, { $inc: {'clicks': 1} })
+      .exec(function (err, result) {
           if (err) {throw err;}
 
           res.json(result);
@@ -57,15 +40,15 @@ module.exports.clickHandler = function (db) {
   };
 
   this.resetClicks = function (req, res) {
-    clicks
-      .update(
-        {},
-        {'clicks': 0},
-        function (err, result) {
+    Clicks
+      .findOneAndUpdate({}, {'clicks': 0})
+      .exec(function (err, result) {
           if (err) {throw err;}
 
           res.json(result);
         }
       );
   };
-};
+}
+
+module.exports = clickHandler;

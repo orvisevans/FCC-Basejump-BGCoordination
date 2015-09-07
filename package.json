@@ -24,6 +24,10 @@
   "homepage": "https://github.com/orvisevans/FCC-Basejump-BGCoordination#readme",
   "dependencies": {
     "express": "^4.13.3",
-    "mongodb": "^2.0.42"
+    "express-session": "^1.11.3",
+    "mongodb": "^2.0.42",
+    "mongoose": "^4.1.5",
+    "passport": "^0.3.0",
+    "passport-twitter": "^1.0.3"
   }
 }
