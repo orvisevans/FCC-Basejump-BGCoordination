@@ -78,52 +78,13 @@ header a ~ p {
 
 /****** Logo Div Styling ******/
 
-img {
-    margin: 0 auto;
-    display: block;
-}
-
 .title-text { /* Styling for the Clementine.js text */
     padding: 0;
-    margin: -25px 0 0 0;
+    margin: -25px 0 15px 0;
+    text-align: center;
     font-weight: 500;
     font-size: 60px;
     color: #FFA000;
-}
-
-/****** Click Styling ******/
-
-.btn-container {    /* Styling for the div that contains the buttons */
-    margin: -10px auto 0 auto;
-    text-align: center;
-}
-
-.btn {  /* Styling for buttons */
-    margin: 0 8px;
-    color: white;
-    background-color: #00BCD4;
-    display: inline-block;
-    border: 0;
-    font-size: 14px;
-    border-radius: 3px;
-    padding: 10px 5px;
-    width: 100px;
-    font-weight: 500;
-}
-
-.btn:focus {    /* Remove outline when hovering over button */
-    outline: none;
-}
-
-.btn:active {   /* Scale the button down by 10% when clicking on button */
-    transform: scale(0.9, 0.9);
-    -webkit-transform: scale(0.9, 0.9);
-    -moz-transform: scale(0.9, 0.9);
-}
-
-.btn-delete {   /* Styling for delete button */
-    background-color: #ECEFF1;
-    color: #212121;
 }
 
 /****** Profile Styling ******/
@@ -180,4 +141,78 @@ span {
     color: #FFFFFF;
     display: inline;
     margin: 0;
+}
+
+/****** Search Styling ******/
+
+.location-search {
+  position: relative;
+  text-align: center;
+}
+
+.search-term {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 5px solid #FFA000;
+  padding: 5px;
+  height: 40px;
+  border-radius: 5px;
+  outline: none;
+}
+
+.search-button {
+  position: relative;
+  height: 40px;
+  margin-left: -14px;
+  background: #FFA000;
+  border: 5px solid #FFA000;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/****** Utility Styling ******/
+
+a {
+  text-decoration: none;
+}
+
+/****** Business-List Styling ******/
+
+.biz-list {
+  list-style-type: none;
+}
+
+.biz-img {
+  display: inline-block;
+  margin: 0px 10px;
+}
+
+.biz-info {
+  display: inline-block;
+}
+
+.biz-name {
+  color: black;
+}
+
+.biz-action {
+  background: #FFA000;
+  border: 5px solid #FFA000;
+  height: 27px;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px 0 0 0;
+}
+
+/****** Footer ******/
+
+footer {
+  opacity: .2;
+}
+
+footer:hover {
+  opacity: 1;
 }

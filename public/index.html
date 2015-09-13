@@ -3,34 +3,43 @@
   <head>
     <title>Clementine.js beginner tutorial</title>
     <link href="http://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.10.0/angular-material.min.css">
     <link href="/public/css/main.css" rel="stylesheet" type="text/css">
   </head>
 
   <header ng-controller="userController">
-    <p>Welcome, @{{ userName }}!</p>
-    <a class="menu" href="/profile">Profile</a>
-    <p>|</p>
-    <a class="menu" href="/logout">Logout</a>
+    <div ng-if="userName">
+      <p>Welcome, @{{ userName }}!</p>
+      <a class="menu" href="/profile">Profile</a>
+      <p>|</p>
+      <a class="menu" href="/logout">Logout</a>
+    </div>
   </header>
 
-  <div ng-controller="titleController">
-    <span class="title-text">{{titleText}}</span>
-  </div>
-
   <body ng-controller="yelpController">
-    <div class="container">
+
+    <div ng-controller="titleController">
+      <p class="title-text">{{titleText}}</p>
+    </div>
+
+    <div class="location-search">
       <form>
-        <input type="text" ng-model="location"></input>
-        <button ng-click="searchCity()">Search!</button>
+        <input class="search-term" type="text" ng-model="location"></input>
+        <button class="search-button" ng-click="searchCity()" type="submit">Search!</button>
       </form>
     </div>
 
-    <ul class="businesses">
-      <li class="row business" ng-repeat="business in businesses">
-        <img src="{{business.image_url}}" class="img img-circle">
-        <a class="h3" href="{{business.url}}">{{business.name}}</a><br>
-        <span class="text-muted">{{business.location.display_address.join(', ')}}</span><br>
+
+    <ul class="biz-list">
+      <li class="biz-item" ng-repeat="business in businesses">
+        <div class="biz-img">
+          <a href="{{business.url}}" class="biz-link"><img src="{{business.image_url}}" alt="{{business.name}}" /></a>
+        </div>
+        <div class="biz-info">
+          <a href="{{business.url}}" class="biz-link"><h4 class="biz-name">{{business.name}}</h4></a>
+          <p class="biz-snippet">{{business.snippet_text}}</p>
+          <button class="biz-action">Join In</button>
+        </div>
+        <hr ng-if="!$last">
       </li>
     </ul>
 
@@ -44,11 +53,12 @@
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-resource.min.js"></script>
+
     <!-- App Files -->
     <script type="text/javascript" src="/controllers/clickController.client.js"></script>
     <script type="text/javascript" src="/controllers/yelpController.client.js"></script>
     <script type="text/javascript" src="/controllers/titleController.client.js"></script>
-    <script type="text/javascript" src="factories/userFactory.js"></script>
-    <script type="text/javascript" src="controllers/userController.client.js"></script>
+    <script type="text/javascript" src="/factories/userFactory.js"></script>
+    <script type="text/javascript" src="/controllers/userController.client.js"></script>
   </body>
 </html>
