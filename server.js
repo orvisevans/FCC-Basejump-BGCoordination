@@ -16,6 +16,7 @@ var path = process.cwd();
 app.use('/public', express.static(path + '/public'));
 app.use('/controllers', express.static(path + '/app/controllers'));
 app.use('/factories', express.static(path + '/app/factories'));
+app.use('/node_modules', express.static(path + '/node_modules'));
 
 app.use(session({
   secret: 'secretBGMeet',
