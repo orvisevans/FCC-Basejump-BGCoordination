@@ -2,3 +2,4 @@ node_modules/
 .eslintrc
 data/
 app/config/auth.js
+TODO.txt
