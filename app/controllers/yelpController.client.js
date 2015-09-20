@@ -8,6 +8,17 @@
         $scope.businesses = [];
         $scope.location = 'Portland, OR';
         $scope.yelpData = {};
+        $scope.user = {};
+
+        userFactory.getData().then(function (user) {
+          if (user.data.username) {
+            $scope.user = user.data;
+          }
+        });
+
+        $scope.userLoggedIn = function () {
+          return $scope.user.username ? true : false;
+        };
 
         function addGoingsParamToBusinesses() {
           userFactory.getData().then(function (user) {
@@ -70,8 +81,6 @@
             addGoingsParamToBusinesses();
           });
         }
-
-        $scope.searchCity();
 
     }]);
 

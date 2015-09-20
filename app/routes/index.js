@@ -46,6 +46,11 @@ module.exports = function(app, passport) {
       res.json(req.user.twitter);
     });
 
+  app.route('/api/user/isLoggedIn')
+    .get(isLoggedIn, function(req, res) {
+      res.send('true');
+    });
+
   app.route('/auth/twitter')
     .get(passport.authenticate('twitter'));
 

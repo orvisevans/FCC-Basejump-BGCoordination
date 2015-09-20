@@ -11,6 +11,10 @@
         return $http.get('/api/user');
       };
 
+      userData.isLoggedIn = function() {
+        return $http.get('/api/user/isLoggedIn')
+      };
+
       return userData;
     }]);
 })();

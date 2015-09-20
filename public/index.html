@@ -29,17 +29,22 @@
     </div>
 
 
-    <ul class="biz-list">
+    <ul class="biz-list" ng-if="businesses.length">
       <li class="biz-item" ng-repeat="business in businesses">
         <div class="biz-img">
-          <a href="{{business.url}}" class="biz-link"><img src="{{business.image_url}}" alt="{{business.name}}" /></a>
+          <a href="{{business.url}}" class="biz-link"><img ng-src="{{business.image_url}}" alt="{{business.name}}" /></a>
         </div>
         <div class="biz-info">
           <a href="{{business.url}}" class="biz-link"><h4 class="biz-name">{{business.name}}</h4></a>
           <p class="biz-snippet">{{business.snippet_text}}</p>
-          <button class="biz-btn biz-not-going" ng-hide="business.imGoing" ng-click="addGoing(business)">Join Today</button>
-          <button class="biz-btn biz-going" ng-show="business.imGoing" ng-click="removeGoing(business)">Already There</button>
-          <span ng-if="business.goings"> - {{business.goings}} going already</span>
+          <div ng-show="userLoggedIn()">
+            <button class="biz-btn biz-not-going" ng-hide="business.imGoing" ng-click="addGoing(business)">Join Today</button>
+            <button class="biz-btn biz-going" ng-show="business.imGoing" ng-click="removeGoing(business)">Already There</button>
+            <span ng-if="business.goings"> - {{business.goings}} going already</span>
+          </div>
+          <div ng-hide="userLoggedIn()">
+            <a class="biz-btn" href="/login">Login to see who else is going!</button>
+          </div>
         </div>
         <hr ng-if="!$last">
       </li>
@@ -47,9 +52,7 @@
 
 
     <footer class="footer">
-      <div class="container">
-          <p>Made by <a href="http://www.orvisevans.com">Orvis Evans</a> for <a href="http://www.freecodecamp.com">FreeCodeCamp</a>'s basejump challenge <a href="http://www.freecodecamp.com/challenges/basejump-build-a-voting-app">Make a Voting App</a></p>
-      </div>
+      <p>Made by <a href="http://www.orvisevans.com">Orvis Evans</a> for <a href="http://www.freecodecamp.com">FreeCodeCamp</a>'s basejump challenge <a href="http://www.freecodecamp.com/challenges/basejump-build-a-voting-app">Make a Voting App</a></p>
     </footer>
 
 
