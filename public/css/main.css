@@ -197,14 +197,23 @@ a {
   color: black;
 }
 
-.biz-action {
-  background: #FFA000;
+.biz-btn {
   border: 5px solid #FFA000;
   height: 27px;
-  color: #fff;
   border-radius: 5px;
   cursor: pointer;
   margin: 10px 0 0 0;
+}
+
+.biz-not-going {
+  background: #FFA000;
+  color: #fff;
+}
+
+.biz-going {
+  background: #945d00;
+  border-color: #945d00;
+  color: #fff;
 }
 
 /****** Footer ******/

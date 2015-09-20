@@ -33,7 +33,6 @@ function goingsHandler () {
         date: req.params.date
       }, function (err, result) {
         if (err) {throw err;}
-        console.log('deleted something:' + result);
       })
   }
 }

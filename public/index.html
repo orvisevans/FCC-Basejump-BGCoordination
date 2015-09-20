@@ -37,7 +37,9 @@
         <div class="biz-info">
           <a href="{{business.url}}" class="biz-link"><h4 class="biz-name">{{business.name}}</h4></a>
           <p class="biz-snippet">{{business.snippet_text}}</p>
-          <button class="biz-action">Join In</button>
+          <button class="biz-btn biz-not-going" ng-hide="business.imGoing" ng-click="addGoing(business)">Join Today</button>
+          <button class="biz-btn biz-going" ng-show="business.imGoing" ng-click="removeGoing(business)">Already There</button>
+          <span ng-if="business.goings"> - {{business.goings}} going already</span>
         </div>
         <hr ng-if="!$last">
       </li>
