@@ -27,7 +27,7 @@ module.exports = function(app, passport) {
 
   app.route('/login')
     .get(function (req, res) {
-      res.sendFile(path + '/public/login.html');
+      res.redirect('/auth/twitter');
     });
 
   app.route('/logout')
@@ -57,7 +57,7 @@ module.exports = function(app, passport) {
   app.route('/auth/twitter/callback')
     .get(passport.authenticate('twitter', {
       successRedirect: '/',
-      failureRedirect: '/login'
+      failureRedirect: '/auth/twitter'
     }));
 
   app.route('/api/clicks')

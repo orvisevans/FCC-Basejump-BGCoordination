@@ -32,6 +32,8 @@
                   return going.businessId === business.id && going.userId === user.data.id;
                 }).length) {
                   business.imGoing = true;
+                } else {
+                  business.imGoing = false;
                 }
               });
             });
@@ -53,7 +55,9 @@
                 } else {
                   business.goings = 1;
                 }
-            });
+              }).error(function(error) {
+                console.log('error adding new Going');
+              });
           });
         };
 
@@ -65,12 +69,9 @@
               date: new Date().setHours(0,0,0,0).toString()
             };
             $http.delete('/api/goings/' + oldGoing.date + '/' + oldGoing.businessId + '/' + oldGoing.userId, oldGoing)
-              .success(function(data) {
-                business.imGoing = false;
-                business.goings -= 1;
-              }).error(function() {
-                console.log('error');
-              })
+              .error(function(error) {
+                console.log('error removing Going');
+              }).then(addGoingsParamToBusinesses());
           });
         };
 
