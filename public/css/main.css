@@ -216,10 +216,12 @@ a {
   color: #fff;
 }
 
+
 /****** Footer ******/
 
 footer {
   opacity: .2;
+  text-align: center;
 }
 
 footer:hover {
