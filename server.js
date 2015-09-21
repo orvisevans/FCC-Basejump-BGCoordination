@@ -9,7 +9,8 @@ var express = require('express'),
 var app = express();
 require('./app/config/passport')(passport);
 
-mongoose.connect('mongodb://localhost:27017/nightlifeApp');
+//mongoose.connect('mongodb://localhost:27017/nightlifeApp');
+mongoose.connect(process.env.MONGOLAB_URI);
 
 var path = process.cwd();
 
