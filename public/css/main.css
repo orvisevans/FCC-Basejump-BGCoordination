@@ -78,7 +78,7 @@ header a ~ p {
 
 /****** Logo Div Styling ******/
 
-.title-text { /* Styling for the Clementine.js text */
+.title-text { /* Styling for the Title text */
     padding: 0;
     margin: -25px 0 15px 0;
     text-align: center;
