@@ -6,7 +6,10 @@ var n = require('nonce')();
 var request = require('request');
 var qs = require('querystring');
 var _ = require('lodash');
-var auth = require('../config/auth');
+var yelpAuth = {
+    consumerSecret: process.env.YELP_CONSUMER_SECRET,
+    tokenSecret: process.env.YELP_TOKEN_SECRET
+  };
 
 /* Function for yelp call
  * ------------------------
@@ -33,8 +36,8 @@ function requestYelp(setParameters, callback) {
   var parameters = _.assign(defaultParameters, setParameters, requiredParameters);
 
   /* We set our secrets here */
-  var consumerSecret = auth.yelpAuth.consumerSecret;
-  var tokenSecret = auth.yelpAuth.tokenSecret;
+  var consumerSecret = yelpAuth.consumerSecret;
+  var tokenSecret = yelpAuth.tokenSecret;
 
   /* Then we call Yelp's Oauth 1.0a server, and it returns a signature */
   /* Note: This signature is only good for 300 seconds after the oauth_timestamp */
