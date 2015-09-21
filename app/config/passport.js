@@ -7,8 +7,7 @@ var twitterAuth = {
     consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
     callbackURL: process.env.TWITTER_CALLBACK_URL
   };
-  console.log(twitterAuth);
-
+  
 module.exports = function (passport) {
   passport.serializeUser(function(user, done) {
     done(null, user.id);
